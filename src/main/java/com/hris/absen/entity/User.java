@@ -45,9 +45,6 @@ public class User extends BaseEntity<User>{
     @Column(name = "nick_name", columnDefinition = "VARCHAR(255)", nullable = false)
     private String nickName;
 
-    @Column(name = "pendidikan_terakhir", columnDefinition = "VARCHAR(255)", nullable = false)
-    private String PendidikanTerakhir;
-
     @Column(name = "no_bpjs_ketenagakerjaan", columnDefinition = "VARCHAR(255)", nullable = false)
     private String noBpjsketenagakerjaan;
 
@@ -84,5 +81,20 @@ public class User extends BaseEntity<User>{
     @Column(name = "password", nullable = false)
     private String password;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "division_id")
+    private Division division;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "position_id")
+    private Position position;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
+    private Company company;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bank_id")
+    private Bank bank;
 
 }

@@ -1,4 +1,25 @@
 package com.hris.absen.entity;
 
-public class Division {
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "division")
+@Setter
+@Getter
+@NoArgsConstructor
+public class Division extends BaseEntity<Division>{
+
+
+    private static final long serialVersionUID = 5241687673548144895L;
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "note")
+    private String note;
 }
