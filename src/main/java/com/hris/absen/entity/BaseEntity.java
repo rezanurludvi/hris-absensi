@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.annotation.PreDestroy;
 import javax.persistence.*;
@@ -16,7 +15,6 @@ import java.util.Date;
 @NoArgsConstructor
 @MappedSuperclass
 @DynamicUpdate
-//@EntityListeners(AuditingEntityListener.class)
 @SuppressWarnings("unchecked")
 public abstract class BaseEntity<T> implements Serializable {
 
@@ -46,6 +44,9 @@ public abstract class BaseEntity<T> implements Serializable {
 
     @Column(name = "deleted_by")
     private String deletedBy;
+
+    @Column(name = "deleted")
+    private boolean deleted = Boolean.FALSE;/*false belum kedeleted ,true sudah terhapus*/
 
     @PrePersist
     protected void onCreate(){

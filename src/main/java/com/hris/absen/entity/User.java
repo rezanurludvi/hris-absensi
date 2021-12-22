@@ -20,7 +20,6 @@ public class User extends BaseEntity<User>{
         ROLE_ADMIN
     }
 
-//  Tabel Delete
 //  Tabel Active
 
     @Column(name = "role", columnDefinition = "VARCHAR(50)")
