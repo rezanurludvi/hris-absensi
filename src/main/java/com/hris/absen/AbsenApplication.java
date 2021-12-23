@@ -1,11 +1,15 @@
 package com.hris.absen;
 
 import com.hris.absen.entity.User;
+//import com.hris.absen.utils.AuditorAwarelmpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 @SpringBootApplication
+//@EnableJpaAuditing(auditorAwareRef = "auditorAware")
 public class AbsenApplication {
 
 	public static void main(String[] args) {
@@ -25,5 +29,9 @@ public class AbsenApplication {
 
 		return null;
 	}
+
+//	public AuditorAware<String> auditorAware(){
+//		return new AuditorAwarelmpl();
+//	}
 
 }
