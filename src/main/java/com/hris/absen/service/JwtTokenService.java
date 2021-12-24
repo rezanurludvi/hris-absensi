@@ -54,6 +54,6 @@ public class JwtTokenService {
     }
 
     public Boolean validationToken(String token, User user){
-        return (token.equals(user.getToken()) && isTokenExpired(token));
+        return (token.equals(user.getToken()) && !isTokenExpired(token));
     }
 }
