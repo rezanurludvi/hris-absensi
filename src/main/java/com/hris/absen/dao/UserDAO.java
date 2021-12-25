@@ -4,6 +4,7 @@ import com.hris.absen.entity.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.List;
@@ -18,6 +19,12 @@ public class UserDAO extends BaseDAO<User> {
             if (param.getUsername() != null){
                 predicates.add(builder.equal(root.get("username"), param.getUsername()));
             }
+        }
+
+        if (!isCount){
+            root.fetch("division", JoinType.INNER);
+            root.fetch("company", JoinType.INNER);
+            root.fetch("position", JoinType.INNER);
         }
 
         return predicates;
