@@ -33,6 +33,10 @@ public class Employee extends BaseEntity<Employee>{
     @Temporal(TemporalType.DATE)
     private Date startDate;
 
+//    @Column(name = "employee_date")
+//    @Temporal(TemporalType.DATE)
+//    private Date employeeDate;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private StatusEmployee status = StatusEmployee.UNPRESENT;
