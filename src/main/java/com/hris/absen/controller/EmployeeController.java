@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("employees")
-@PreAuthorize("permitAll()")
 public class EmployeeController extends BaseController{
 
     @Autowired
@@ -24,8 +23,8 @@ public class EmployeeController extends BaseController{
     @PreAuthorize("permitAll()")
     @GetMapping
     public RestResult find(@RequestParam(value = "param", required = false) String param,
-                               @RequestParam(value = "offset") int offset,
-                               @RequestParam(value = "limit") int limit) throws JsonProcessingException {
+                           @RequestParam(value = "offset") int offset,
+                           @RequestParam(value = "limit") int limit) throws JsonProcessingException {
         Employee employee = param != null ? new ObjectMapper().readValue(param, Employee.class) : new Employee();
 
         Long rows = service.count(employee);
@@ -33,20 +32,20 @@ public class EmployeeController extends BaseController{
         return new RestResult(rows > 0 ? service.find(employee, offset, limit) : new ArrayList<>(), rows);
     }
 
-    @PreAuthorize("permitAll()")
-    @GetMapping(value = "by-date")
-    public RestResult findByDate(@RequestParam(value = "param", required = false) String param,
-                                 @RequestParam(value = "start-date") String startDate,
-                                 @RequestParam(value = "end-date") String endDate) throws JsonProcessingException {
-        RestResult result = new RestResult(StatusCode.OPERATION_FAILED);
-
-        Employee employee = param != null ? new ObjectMapper().readValue(param, Employee.class) : new Employee();
-
-        result.setData(service.findByDate(employee, DateUtils.fromString(startDate), DateUtils.fromString(endDate)));
-        result.setRows((long) service.findByDate(employee, DateUtils.fromString(startDate), DateUtils.fromString(endDate)).size());
-
-        return result;
-    }
+//    @PreAuthorize("permitAll()")
+//    @GetMapping(value = "by-date")
+//    public RestResult findByDate(@RequestParam(value = "param", required = false) String param,
+//                                 @RequestParam(value = "start-date") String startDate,
+//                                 @RequestParam(value = "end-date") String endDate) throws JsonProcessingException {
+//        RestResult result = new RestResult(StatusCode.OPERATION_FAILED);
+//
+//        Employee employee = param != null ? new ObjectMapper().readValue(param, Employee.class) : new Employee();
+//
+//        result.setData(service.findByDate(employee, DateUtils.fromString(startDate), DateUtils.fromString(endDate)));
+//        result.setRows((long) service.findByDate(employee, DateUtils.fromString(startDate), DateUtils.fromString(endDate)).size());
+//
+//        return result;
+//    }
 
     @PreAuthorize("permitAll()")
     @PostMapping

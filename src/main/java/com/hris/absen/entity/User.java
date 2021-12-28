@@ -26,7 +26,7 @@ public class User extends BaseEntity<User>{
     @Enumerated(EnumType.STRING)
     private Role role = Role.ROLE_USER;
 
-//    @Column(name = "date_of_birth", columnDefinition = "DATETIME")
+//    @Column(name = "date_of_birth")
 //    private Date dateOfBirth;
 
     @Column(name = "domicile_address", columnDefinition = "VARCHAR(255)")

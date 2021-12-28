@@ -25,6 +25,7 @@ public class UserDAO extends BaseDAO<User> {
             root.fetch("division", JoinType.INNER);
             root.fetch("company", JoinType.INNER);
             root.fetch("position", JoinType.INNER);
+            root.fetch("bank", JoinType.INNER);
         }
 
         return predicates;

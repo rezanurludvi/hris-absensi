@@ -39,7 +39,7 @@ public class EmployeeDAO extends BaseDAO<Employee> {
             }
         }
 
-        query.where(builder.between(root.get("employeeDate"), startDate, endDate));/*perbaiki*/
+        query.where(builder.between(root.get("startDate"), startDate, endDate));/*perbaiki*/
 
         query.orderBy(builder.asc(root.get("id")));
 

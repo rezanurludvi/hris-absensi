@@ -37,15 +37,15 @@ public class EmployeeService extends BaseService<Employee> {
             Employee reference = getDAO().findReference(entity.getId());
 
             reference.setStartDate(entity.getStartDate() != null
-                ? entity.getStartDate()
-                    :new Date());
+                    ? entity.getStartDate()
+                    : new Date());
 
             reference.setStatus(reference.getStatus().equals(Employee.StatusEmployee.UNPRESENT)
                     ? Employee.StatusEmployee.PRESENT
                     : reference.getStatus());
 
             entity.setStartDate(reference.getStartDate());/*percobaan*/
-            entity.setStartDate(reference.getStartDate());
+//            entity.setStartDate(reference.getStartDate());
             entity.setStatus(reference.getStatus());
 
             return entity;
@@ -54,7 +54,7 @@ public class EmployeeService extends BaseService<Employee> {
         return null;
     }
 
-    /*perbaiki*/
+    /*percobaan*/
     @Transactional
     public Collection<Employee> findByDate(Employee entity, Date startDate, Date endDate){
         Collection<Employee> result = dao.findByDate(entity, startDate, endDate);

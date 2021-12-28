@@ -18,32 +18,31 @@ public class Attendance extends BaseEntity<Attendance>{
 
     private static final long serialVersionUID = 583148930261526653L;
 
-    @Column(name = "date", columnDefinition = "DATE")
-    private Date date;
-
-    @Column(name = "end_time")
-//    @Temporal(TemporalType.TIMESTAMP)
-    private Time endTime;
-
     @Column(name = "note")
     private String note;
 
     @Column(name = "project_name")
     private String projectName;
 
-    @Column(name = "rest_end_time")
-//    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "end_time", columnDefinition = "TIME")
+    private Time endTime;
+
+    @Column(name = "attendance_date", columnDefinition = "DATE")
+    private Date attendanceDate;
+
+    @Column(name = "rest_end_time", columnDefinition = "TIME")
     private Time restEndTime;
 
-    @Column(name = "rest_start_time")
-//    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "rest_start_time", columnDefinition = "TIME")
     private Time restStartTime;
 
-    @Column(name = "start_time")
-//    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "start_time", columnDefinition = "TIME")
     private Time startTime;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
     private Employee employee;
+
+    public void setAttendanceDate(java.util.Date date) {
+    }
 }
