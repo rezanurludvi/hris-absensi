@@ -39,10 +39,10 @@ public class Attendance extends BaseEntity<Attendance>{
     @Column(name = "start_time", columnDefinition = "TIME")
     private Time startTime;
 
+//    public void setAttendanceDate(java.util.Date date) {
+//    }
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
     private Employee employee;
-
-    public void setAttendanceDate(java.util.Date date) {
-    }
 }

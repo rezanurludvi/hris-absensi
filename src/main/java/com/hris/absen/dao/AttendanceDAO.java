@@ -14,17 +14,16 @@ public class AttendanceDAO extends BaseDAO<Attendance> {
     @Override
     public List<Predicate> predicates(Attendance param, CriteriaBuilder builder, Root<Attendance> root, boolean isCount) {
         List<Predicate> predicates = super.predicates(param, builder, root, isCount);
-
+//
 //        if (param != null){
 //            if (param.getStartTime() != null){
 //                predicates.add(builder.equal(root.get("status"), param.getStartTime()));
 //            }
 //        }
-
+//
         if (!isCount){
-            root.fetch("employee", JoinType.LEFT);
-        }
-
+            root.fetch("employee", JoinType.INNER);
+       }
         return predicates;
     }
 }

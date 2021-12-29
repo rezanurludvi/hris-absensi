@@ -27,16 +27,16 @@ public class AbsenApplication {
 		return null;
 	}
 
-    public static Employee getCurrentEmployee() {
-		try {
-			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			if (principal != null && principal.getClass().equals(Employee.class)){
-				return (Employee) principal;
-			}
-		}catch (Exception ignore){
-
-		}
-
-		return null;
-    }
+//    public static Employee getCurrentEmployee() {
+//		try {
+//			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//			if (principal != null && principal.getClass().equals(Employee.class)){
+//				return (Employee) principal;
+//			}
+//		}catch (Exception ignore){
+//
+//		}
+//
+//		return null;
+//    }
 }

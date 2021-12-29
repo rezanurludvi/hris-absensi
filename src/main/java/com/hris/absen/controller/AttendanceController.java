@@ -43,6 +43,18 @@ public class AttendanceController extends BaseController{
         return result;
     }
 
+    @PreAuthorize("permitAll()")
+    @PutMapping
+    public RestResult update(@RequestBody Attendance entity){
+        RestResult result = new RestResult(StatusCode.OPERATION_FAILED);
+
+        if (entity != null){
+            result.setData(service.update(entity));
+            result.setData(service.update(entity) != null ? StatusCode.UPDATE_SUCCESS : StatusCode.UPDATE_FAILED);
+        }
+        return result;
+    }
+
 
     @PreAuthorize("permitAll()")
     @DeleteMapping(value = "{id}")
