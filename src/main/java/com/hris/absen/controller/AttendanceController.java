@@ -50,7 +50,7 @@ public class AttendanceController extends BaseController{
 
         if (entity != null){
             result.setData(service.update(entity));
-            result.setData(service.update(entity) != null ? StatusCode.UPDATE_SUCCESS : StatusCode.UPDATE_FAILED);
+            result.setStatus(service.update(entity) != null ? StatusCode.UPDATE_SUCCESS : StatusCode.UPDATE_FAILED);
         }
         return result;
     }

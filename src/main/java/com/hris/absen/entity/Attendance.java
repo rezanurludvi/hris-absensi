@@ -5,8 +5,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "attendance")
@@ -21,26 +22,32 @@ public class Attendance extends BaseEntity<Attendance>{
     @Column(name = "note")
     private String note;
 
-    @Column(name = "project_name")
+    @Column(name = "project_name", columnDefinition = "VARCHAR(100)")
     private String projectName;
 
-    @Column(name = "end_time", columnDefinition = "TIME")
-    private Time endTime;
+    @Column(name = "end_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date endTime;
 
-    @Column(name = "attendance_date", columnDefinition = "DATE")
-    private Date attendanceDate;
+    @Column(name = "attendance_date")
+    @Temporal(TemporalType.DATE)
+    private Date attendanceDate;/*utils percobaan*/
 
-    @Column(name = "rest_end_time", columnDefinition = "TIME")
-    private Time restEndTime;
+    @Column(name = "rest_end_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date restEndTime;
 
-    @Column(name = "rest_start_time", columnDefinition = "TIME")
-    private Time restStartTime;
+    @Column(name = "rest_start_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date restStartTime;
 
-    @Column(name = "start_time", columnDefinition = "TIME")
-    private Time startTime;
+    @Column(name = "start_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date startTime;
 
-//    public void setAttendanceDate(java.util.Date date) {
-//    }
+    public Attendance(String projectName){
+        this.projectName = projectName;
+    }
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
