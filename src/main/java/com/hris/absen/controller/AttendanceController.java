@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hris.absen.common.RestResult;
 import com.hris.absen.common.StatusCode;
 import com.hris.absen.entity.Attendance;
+import com.hris.absen.entity.User;
 import com.hris.absen.service.AttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,7 +27,7 @@ public class AttendanceController extends BaseController{
                            @RequestParam(value = "limit", required = false) int limit) throws JsonProcessingException {
         Attendance attendance = param != null ? new ObjectMapper().readValue(param, Attendance.class) : new Attendance();
 
-        Long rows = service.count(attendance);
+        long rows = service.count(attendance);
 
         return new RestResult(rows > 0 ? service.find(attendance, offset, limit) : new ArrayList<>(), rows);
     }

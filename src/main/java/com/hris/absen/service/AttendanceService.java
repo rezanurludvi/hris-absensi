@@ -29,8 +29,7 @@ public class AttendanceService extends BaseService<Attendance> {
     public Attendance save(Attendance entity){
 
         entity.setAttendanceDate(new java.util.Date());/*coba*/
-//        entity.setEmployee(AbsenApplication.getCurrentEmployee());
-
+//        entity.setEmployee(AbsenApplication.getCurrentEmployee());;
         return dao.save(entity);
     }
 
@@ -52,10 +51,10 @@ public class AttendanceService extends BaseService<Attendance> {
                     : new java.util.Date());
 
             /*percobaan*/
-            reference.setEmployee(employee);
-            reference.getEmployee().setStatus(reference.getEmployee().getStatus().equals(Employee.StatusEmployee.UNPRESENT)
-                        ? Employee.StatusEmployee.PRESENT
-                        : reference.getEmployee().getStatus());
+//            reference.setEmployee(employee);
+//            reference.getEmployee().setStatus(reference.getEmployee().getStatus().equals(Employee.StatusEmployee.UNPRESENT)
+//                        ? Employee.StatusEmployee.PRESENT
+//                        : reference.getEmployee().getStatus());
 
 //            reference.setEmployee(reference.getEmployee().equals(Employee.StatusEmployee.UNPRESENT)
 //                        ? Employee.StatusEmployee.PRESENT :
@@ -65,7 +64,7 @@ public class AttendanceService extends BaseService<Attendance> {
             entity.setAttendanceDate(reference.getAttendanceDate());
             entity.setStartTime(reference.getStartTime());
 //            entity.setStartTime(reference.getRestStartTime());/*percobaan*/
-            entity.getEmployee().setStatus(reference.getEmployee().getStatus());
+//            entity.getEmployee().setStatus(reference.getEmployee().getStatus());
 
             return entity;
         }
